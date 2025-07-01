@@ -1,242 +1,665 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Karang Taruna Kebon Jeruk</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    .navbar {
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(6px);
-    }
-
-    .hero {
-      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-        url('https://source.unsplash.com/1600x900/?community,indonesia') center/cover no-repeat;
-      color: white;
-      height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 100px 20px;
-    }
-
-    .hero h1 {
-      font-size: 3.5rem;
-      font-weight: bold;
-    }
-
-    .section-title {
-      font-weight: bold;
-      margin-bottom: 40px;
-      color: #343a40;
-    }
-
-    .card {
-      transition: transform 0.3s, box-shadow 0.3s;
-      border: none;
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    }
-
-    .card .card-title {
-      margin-top: 10px;
-    }
-
-    .icon-box {
-      font-size: 40px;
-      color: #0d6efd;
-    }
-
-    #kontak form {
-      background: rgba(255, 255, 255, 0.8);
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    button.btn-primary {
-      transition: background-color 0.3s, transform 0.2s;
-    }
-
-    button.btn-primary:hover {
-      background-color: #0b5ed7;
-      transform: scale(1.05);
-    }
-
-    footer {
-      background: #222;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karang Taruna Kebon Jeruk</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/fotoanggotanew.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .activity-card:hover .activity-overlay {
+            opacity: 1;
+        }
+        
+        .activity-overlay {
+            transition: opacity 0.3s ease;
+        }
+        
+        #backToTop {
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #3b82f6;
+            border-radius: 50%;
+            top: 0;
+            left: -10px;
+            transform: translateX(-50%);
+        }
+    </style>
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-1">
+                    <img src="assets/katarlogo.png" alt="Logo Karang Taruna dengan gambar siluet pemuda-pemudi berkumpul" class="h-10">
+                    <span class="font-bold text-blue-600 text-xl">Karang Taruna</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-800 hover:text-blue-600 font-medium">Beranda</a>
+                    <a href="#profile" class="text-gray-800 hover:text-blue-600 font-medium">Profil</a>
+                    <a href="#activities" class="text-gray-800 hover:text-blue-600 font-medium">Kegiatan</a>
+                    <a href="#gallery" class="text-gray-800 hover:text-blue-600 font-medium">Galeri</a>
+                    <a href="login.html" class="text-gray-800 hover:text-blue-600 font-medium">Login</a>
+                    <a href="#contact" class="text-gray-800 hover:text-blue-600 font-medium">Kontak</a>
+                </div>
+                <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="md:hidden hidden py-2 px-4 bg-white" id="mobile-menu">
+                <a href="#home" class="block py-2 text-gray-800 hover:text-blue-600">Beranda</a>
+                <a href="#profile" class="block py-2 text-gray-800 hover:text-blue-600">Profil</a>
+                <a href="#activities" class="block py-2 text-gray-800 hover:text-blue-600">Kegiatan</a>
+                <a href="#gallery" class="block py-2 text-gray-800 hover:text-blue-600">Galeri</a>
+                <a href="login.html" class="block py-2 text-gray-800 hover:text-blue-600">Login</a>
+                <a href="#contact" class="block py-2 text-gray-800 hover:text-blue-600">Kontak</a>
+            </div>
+        </div>
+    </nav>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="#">Karang Taruna Kebon Jeruk</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
+    <!-- Hero Section -->
+    <section class="hero-section min-h-screen flex items-center justify-center text-white" id="home">
+        <div class="text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Karang Taruna <span class="text-blue-400">Generasi Muda</span></h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Wadah pengembangan diri pemuda untuk membangun desa dan berkontribusi bagi masyarakat.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#register" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300">Daftar Sekarang</a>
+                <a href="#activities" class="bg-white hover:bg-gray-100 text-gray-800 px-6 py-3 rounded-lg font-medium transition duration-300">Lihat Kegiatan</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section class="py-16 px-4 bg-gray-50" id="profile">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-3">Profil Karang Taruna</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="assets/fotoanggota2.jpg" alt="Anggota Karang Taruna sedang berkegiatan bersama di lapangan dengan seragam merah putih" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Tentang Kami</h3>
+                    <p class="text-gray-600 mb-4">Karang Taruna adalah organisasi kepemudaan di Indonesia yang dibentuk oleh masyarakat sebagai wadah generasi muda untuk mengembangkan diri, tumbuh, dan berkembang atas dasar kesadaran serta tanggung jawab sosial dari, oleh, dan untuk generasi muda.</p>
+                    <p class="text-gray-600 mb-6">Kami berdiri sejak tahun 1990 dan terus aktif dalam berbagai kegiatan sosial, pembangunan desa, serta pengembangan potensi pemuda.</p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <h4 class="font-bold text-blue-600 mb-2">Visi</h4>
+                            <p class="text-gray-600">Mewujudkan pemuda yang mandiri, kreatif, dan bertanggung jawab.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <h4 class="font-bold text-blue-600 mb-2">Misi</h4>
+                            <p class="text-gray-600">Membangun karakter pemuda melalui kegiatan positif dan pemberdayaan masyarakat.</p>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition duration-300">Hubungi Kami</a>
+                </div>
+            </div>
+            
+            <div class="mt-16">
+                <h3 class="text-2xl font-semibold text-center text-gray-800 mb-8">Struktur Organisasi</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="bg-white p-4 rounded-lg shadow text-center">
+                        <div class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-3">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/65093f2b-6433-41a1-b0f9-2cf8b46130f2.png" alt="Ketua Karang Taruna dengan penampilan formal memakai dasi" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-bold text-gray-800">Budi Santoso</h4>
+                        <p class="text-gray-600 text-sm">Ketua</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow text-center">
+                        <div class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-3">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/81dab75f-9c02-4885-970d-42f4c048f037.png" alt="Wakil Ketua Karang Taruna dengan senyum ramah dan mengenakan kemeja putih" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-bold text-gray-800">Ani Wijaya</h4>
+                        <p class="text-gray-600 text-sm">Wakil Ketua</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow text-center">
+                        <div class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-3">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b582e817-c456-4810-bed1-8bd3bdf8539a.png" alt="Sekretaris Karang Taruna dengan kacamata sedang memegang buku catatan" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-bold text-gray-800">Citra Dewi</h4>
+                        <p class="text-gray-600 text-sm">Sekretaris</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow text-center">
+                        <div class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-3">
+                            <img src="assets/profilefikri.jpg" alt="Bendahara Karang Taruna sedang memegang kalkulator dan buku keuangan" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-bold text-gray-800">Fikri</h4>
+                        <p class="text-gray-600 text-sm">Bendahara</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section class="py-16 px-4 bg-white" id="activities">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-3">Program & Kegiatan</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Berbagai program unggulan yang kami selenggarakan untuk kepentingan masyarakat dan pengembangan diri anggota.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg transition duration-300 card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/65a69ea9-06cb-4bb0-a911-f8d240ff9957.png" alt="Kegiatan pelatihan kerajinan tangan dengan peserta sedang membuat anyaman" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Pelatihan Kewirausahaan</h3>
+                        <p class="text-gray-600 mb-4">Program pelatihan untuk mengembangkan keterampilan wirausaha seperti kerajinan tangan, pertanian organik, dan digital marketing.</p>
+                        <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Setiap Sabtu</span>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg transition duration-300 card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e80ed248-1539-4cbe-b2f5-7257af8942bc.png" alt="Kegiatan kerja bakti membersihkan lingkungan dengan peserta menggunakan alat kebersihan" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Bakti Sosial</h3>
+                        <p class="text-gray-600 mb-4">Aksi sosial seperti donor darah, pembagian sembako, renovasi rumah tidak layak huni, dan pembersihan lingkungan.</p>
+                        <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Bulanan</span>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg transition duration-300 card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ea1f80e9-1bde-4722-a7de-975fd177f88c.png" alt="Kegiatan olahraga voli antar pemuda dengan latar lapangan hijau" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Olahraga & Kesenian</h3>
+                        <p class="text-gray-600 mb-4">Kegiatan pengembangan bakat melalui turnamen olahraga, pentas seni, dan pelatihan musik tradisional.</p>
+                        <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Mingguan</span>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="text-2xl font-semibold text-center text-gray-800 mb-8">Jadwal Kegiatan Bulan Ini</h3>
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <div class="grid grid-cols-7 bg-gray-100 border-b">
+                    <div class="py-3 text-center font-medium text-gray-700">Minggu</div>
+                    <div class="py-3 text-center font-medium text-gray-700">Senin</div>
+                    <div class="py-3 text-center font-medium text-gray-700">Selasa</div>
+                    <div class="py-3 text-center font-medium text-gray-700">Rabu</div>
+                    <div class="py-3 text-center font-medium text-gray-700">Kamis</div>
+                    <div class="py-3 text-center font-medium text-gray-700">Jumat</div>
+                    <div class="py-3 text-center font-medium text-gray-700">Sabtu</div>
+                </div>
+                <div class="grid grid-cols-7">
+                    <div class="min-h-32 border p-2"></div>
+                    <div class="min-h-32 border p-2">
+                        <div class="bg-blue-100 rounded p-2 mb-2">
+                            <div class="text-xs text-blue-800">19:00 - 21:00</div>
+                            <div class="text-sm font-medium">Jadwal Tidak Tersedia</div>
+                        </div>
+                    </div>
+                    <div class="min-h-32 border p-2">
+                        <div class="bg-purple-100 rounded p-2 mb-2">
+                            <div class="text-xs text-purple-800">15:00 - 17:00</div>
+                            <div class="text-sm font-medium">Jadwal Tidak Tersedia</div>
+                        </div>
+                    </div>
+                    <div class="min-h-32 border p-2"></div>
+                    <div class="min-h-32 border p-2">
+                        <div class="bg-green-100 rounded p-2 mb-2">
+                            <div class="text-xs text-green-800">09:00 - 12:00</div>
+                            <div class="text-sm font-medium">Jadwal Tidak Tersedia</div>
+                        </div>
+                    </div>
+                    <div class="min-h-32 border p-2">
+                        <div class="bg-yellow-100 rounded p-2 mb-2">
+                            <div class="text-xs text-yellow-800">20:00 - 22:00</div>
+                            <div class="text-sm font-medium">Jadwal Tidak Tersedia</div>
+                        </div>
+                    </div>
+                    <div class="min-h-32 border p-2">
+                        <div class="bg-red-100 rounded p-2 mb-2">
+                            <div class="text-xs text-red-800">08:00 - 12:00</div>
+                            <div class="text-sm font-medium">Jadwal Tidak Tersedia</div>
+                        </div>
+                        <div class="bg-blue-100 rounded p-2">
+                            <div class="text-xs text-blue-800">14:00 - 17:00</div>
+                            <div class="text-sm font-medium">Jadwal Tidak Tersedia</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-16 px-4 bg-gray-50" id="gallery">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-3">Galeri Kegiatan</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Dokumentasi berbagai kegiatan Karang Taruna yang telah kami laksanakan.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                <div class="relative overflow-hidden rounded-lg activity-card">
+                    <img src="assets/lombafutsal.jpg" alt="Lomba Futsal" class="w-full h-48 md:h-64 object-cover">
+                    <div class="activity-overlay absolute inset-0 bg-black bg-opacity-50 opacity-0 flex items-center justify-center">
+                        <span class="text-white font-medium">Lomba Futsal</span>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden rounded-lg activity-card">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a9f5ec7f-affd-4b01-8dac-026c22aefcd1.png" alt="Suasana pelatihan komputer dengan peserta duduk menghadap laptop" class="w-full h-48 md:h-64 object-cover">
+                    <div class="activity-overlay absolute inset-0 bg-black bg-opacity-50 opacity-0 flex items-center justify-center">
+                        <span class="text-white font-medium">Pelatihan Komputer</span>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden rounded-lg activity-card">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/68af99ff-4d14-4c22-a752-f7174b5d233d.png" alt="Kegiatan senam bersama di lapangan terbuka dengan peserta dalam formasi melingkar" class="w-full h-48 md:h-64 object-cover">
+                    <div class="activity-overlay absolute inset-0 bg-black bg-opacity-50 opacity-0 flex items-center justify-center">
+                        <span class="text-white font-medium">Senam Bersama</span>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden rounded-lg activity-card">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/198e3358-60c3-43e1-9fbe-87c5a665c53b.png" alt="Anggota Karang Taruna sedang membantu renovasi rumah warga" class="w-full h-48 md:h-64 object-cover">
+                    <div class="activity-overlay absolute inset-0 bg-black bg-opacity-50 opacity-0 flex items-center justify-center">
+                        <span class="text-white font-medium">Renovasi Rumah</span>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden rounded-lg activity-card">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b9a6fa9b-ab56-499d-baa1-413d9fc368d5.png" alt="Pentas seni dengan penari tradisional di panggung dengan dekorasi warna-warni" class="w-full h-48 md:h-64 object-cover">
+                    <div class="activity-overlay absolute inset-0 bg-black bg-opacity-50 opacity-0 flex items-center justify-center">
+                        <span class="text-white font-medium">Pentas Seni</span>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden rounded-lg activity-card">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b32fd3c1-3a12-4962-8c9f-7a973a2748e8.png" alt="Kegiatan tanam pohon dengan anggota sedang menggali tanah untuk menanam bibit" class="w-full h-48 md:h-64 object-cover">
+                    <div class="activity-overlay absolute inset-0 bg-black bg-opacity-50 opacity-0 flex items-center justify-center">
+                        <span class="text-white font-medium">Penghijauan</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300" id="loadMore">Muat Lebih Banyak</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="py-16 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-3">Timeline Kegiatan</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Perjalanan Karang Taruna dalam mengembangkan masyarakat dan lingkungan sekitar.</p>
+            </div>
+            
+            <div class="relative mt-12">
+                <div class="border-l-2 border-blue-600 absolute h-full top-0 left-4 md:left-1/2 transform md:-translate-x-1/2"></div>
+                
+                <div class="mb-12 flex flex-col md:flex-row items-center">
+                    <div class="flex-1 md:pr-8 md:text-right mb-4 md:mb-0">
+                        <div class="bg-white p-6 rounded-lg shadow-md inline-block">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Pembentukan Karang Taruna</h3>
+                            <p class="text-gray-600">Tahun 1995</p>
+                            <p class="text-gray-600 mt-2">Mendapatkan Juara 1 Lomba RT. Tergiat Tingkat RW 03 Kel.Kebon Jeruk</p>
+                        </div>
+                    </div>
+                    <div class="md:w-8 md:h-8"></div>
+                    <div class="flex-1">
+                        <div class="hidden md:block bg-white p-6 rounded-lg shadow-md h-32 opacity-0"></div>
+                    </div>
+                </div>
+                
+                <div class="mb-12 flex flex-col md:flex-row items-center">
+                    <div class="flex-1">
+                        <div class="hidden md:block bg-white p-6 rounded-lg shadow-md h-32 opacity-0"></div>
+                    </div>
+                    <div class="md:w-8 md:h-8"></div>
+                    <div class="flex-1 md:pl-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md inline-block">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Program Pertama</h3>
+                            <p class="text-gray-600">April 1991</p>
+                            <p class="text-gray-600 mt-2">Melaksanakan kerja bakti membersihkan selokan desa sebagai kegiatan pertama.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-12 flex flex-col md:flex-row items-center">
+                    <div class="flex-1 md:pr-8 md:text-right mb-4 md:mb-0">
+                        <div class="bg-white p-6 rounded-lg shadow-md inline-block">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Ekspansi Anggota</h3>
+                            <p class="text-gray-600">2005</p>
+                            <p class="text-gray-600 mt-2">Anggota berkembang menjadi 100+ orang dengan berbagai program baru.</p>
+                        </div>
+                    </div>
+                    <div class="md:w-8 md:h-8"></div>
+                    <div class="flex-1">
+                        <div class="hidden md:block bg-white p-6 rounded-lg shadow-md h-32 opacity-0"></div>
+                    </div>
+                </div>
+                
+                <div class="mb-12 flex flex-col md:flex-row items-center">
+                    <div class="flex-1">
+                        <div class="hidden md:block bg-white p-6 rounded-lg shadow-md h-32 opacity-0"></div>
+                    </div>
+                    <div class="md:w-8 md:h-8"></div>
+                    <div class="flex-1 md:pl-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md inline-block">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Penghargaan Desa</h3>
+                            <p class="text-gray-600">2018</p>
+                            <p class="text-gray-600 mt-2">Mendapat penghargaan sebagai Karang Taruna teraktif se-Kecamatan.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="flex-1 md:pr-8 md:text-right mb-4 md:mb-0">
+                        <div class="bg-white p-6 rounded-lg shadow-md inline-block">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Program Digital</h3>
+                            <p class="text-gray-600">2022 - Sekarang</p>
+                            <p class="text-gray-600 mt-2">Memulai program pelatihan digital untuk anggota dan masyarakat luas.</p>
+                        </div>
+                    </div>
+                    <div class="md:w-8 md:h-8"></div>
+                    <div class="flex-1">
+                        <div class="hidden md:block bg-white p-6 rounded-lg shadow-md h-32 opacity-0"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-3">Kata Mereka</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Pendapat anggota dan masyarakat tentang Karang Taruna kami.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg shadow">
+                    <div class="flex items-center mb-4">
+                        <img src="assets/profilefikri.jpg" alt="Foto profil Andi Wijaya dengan latar belakang biru muda" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Fikri</h4>
+                            <p class="text-sm text-gray-600">Anggota sejak 2016</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Karang Taruna memberi ruang bagi pemuda untuk mengembangkan potensi diri, seperti kepemimpinan, keterampilan kerja, hingga kepekaan sosial."</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/95e16a75-bace-4a9e-be44-f2222640cba4.png" alt="Foto profil Siti Rahayu dengan rambut panjang dan senyuman hangat" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Siti Rahayu</h4>
+                            <p class="text-sm text-gray-600">Ketua RT 03</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Karang Taruna sangat membantu dalam kegiatan gotong royong di lingkungan kami. Pemuda-pemudi yang aktif dan bertanggung jawab."</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/25050906-da3f-41bc-96e2-5a97a37d7d71.png" alt="Foto profil Budi Santoso dengan ekspresi serius dan kacamata" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Budi Santoso</h4>
+                            <p class="text-sm text-gray-600">Anggota baru</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Bergabung dengan Karang Taruna memberikan banyak teman baru dan kesempatan belajar hal-hal positif. Sangat direkomendasikan!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 px-4 bg-gray-50" id="contact">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-3">Hubungi Kami</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Silakan hubungi kami untuk informasi lebih lanjut tentang kegiatan Karang Taruna.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md md:w-1/2">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Informasi Kontak</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-blue-100 rounded-full p-2 mr-4">
+                                <svg class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                            <p class="text-gray-600">Jl. H Pe'eng No.31 Kebon Jeruk Jakarta Barat 11530</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-blue-100 rounded-full p-2 mr-4">
+                                <svg class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                            </div>
+                            <p class="text-gray-600">+62 857-1067-5351</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-blue-100 rounded-full p-2 mr-4">
+                                <svg class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <p class="text-gray-600">karangtaruna@gmail.com</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-blue-100 rounded-full p-2 mr-4">
+                                <svg class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                </svg>
+                            </div>
+                            <p class="text-gray-600">Senin - Jumat : 08.00 - 20.00 WIB</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <h4 class="font-bold text-gray-800 mb-3">Media Sosial</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-blue-100 text-blue-600 hover:bg-blue-200 rounded-full p-2 transition duration-300">
+                                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="bg-blue-100 text-blue-600 hover:bg-blue-200 rounded-full p-2 transition duration-300">
+                                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="bg-blue-100 text-blue-600 hover:bg-blue-200 rounded-full p-2 transition duration-300">
+                                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="bg-blue-100 text-blue-600 hover:bg-blue-200 rounded-full p-2 transition duration-300">
+                                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md md:w-1/2">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Kirim Pesan</h3>
+                    <form id="contactForm">
+                        <div class="mb-4">
+                            <label for="contactName" class="block text-gray-700 font-medium mb-2">Nama Anda</label>
+                            <input type="text" id="contactName" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="contactEmail" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="contactEmail" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="contactSubject" class="block text-gray-700 font-medium mb-2">Subjek</label>
+                            <input type="text" id="contactSubject" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="contactMessage" class="block text-gray-700 font-medium mb-2">Pesan</label>
+                            <textarea id="contactMessage" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                        </div>
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300 w-full">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Karang Taruna</h3>
+                    <p class="text-gray-300">Wadah pengembangan diri pemuda untuk membangun desa dan berkontribusi bagi masyarakat.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Menu Cepat</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-white transition duration-300">Beranda</a></li>
+                        <li><a href="#profile" class="text-gray-300 hover:text-white transition duration-300">Profil</a></li>
+                        <li><a href="#activities" class="text-gray-300 hover:text-white transition duration-300">Kegiatan</a></li>
+                        <li><a href="#gallery" class="text-gray-300 hover:text-white transition duration-300">Galeri</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-300 mb-4">Daftar untuk mendapatkan info terbaru tentang kegiatan kami.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Email Anda" class="px-4 py-2 rounded-l-lg w-full focus:outline-none text-gray-800">
+                        <button class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-lg focus:outline-none">Daftar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-300">© 2023 Karang Taruna Kebon Jeruk. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link active" href="#">Beranda</a></li>
-        <li class="nav-item"><a class="nav-link" href="#visi">Visi Misi</a></li>
-        <li class="nav-item"><a class="nav-link" href="#program">Program</a></li>
-        <li class="nav-item"><a class="nav-link" href="#informasi">Informasi</a></li>
-        <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="collapse navbar-collapse" id="navbarNav">
-  <ul class="navbar-nav ms-auto">
-    <div class="dropdown ms-3">
-  <button class="btn btn-sm text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    <i class="fas fa-bars"></i>
-  </button>
-  <ul class="dropdown-menu dropdown-menu-end">
-    <li><a class="dropdown-item" href="#">Pengaturan</a></li>
-    <li><a class="dropdown-item" href="login.html">Kelola Admin</a></li>
-    <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item text-danger" href="index.html">Keluar</a></li>
-  </ul>
-</div>
 
-</nav>
-
-<!-- Hero Section -->
-<section class="hero">
-  <div data-aos="fade-up">
-    <h1>Karang Taruna Kebon Jeruk</h1>
-    <p class="lead mt-3">Bersama Membangun Generasi Muda yang Aktif dan Mandiri</p>
-  </div>
-</section>
-
-<!-- Visi Misi -->
-<section id="visi" class="py-5 bg-light">
-  <div class="container">
-    <h2 class="text-center section-title" data-aos="fade-right">Visi & Misi</h2>
-    <div class="row">
-      <div class="col-md-6" data-aos="fade-up">
-        <h5 class="fw-semibold">Visi</h5>
-        <p>Mewujudkan pemuda yang berdaya, berkarya, dan berkontribusi aktif dalam pembangunan masyarakat.</p>
-      </div>
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-        <h5 class="fw-semibold">Misi</h5>
-        <ul>
-          <li>Meningkatkan keterampilan dan potensi pemuda</li>
-          <li>Menumbuhkan semangat gotong royong</li>
-          <li>Menjalin kerja sama dengan masyarakat dan lembaga terkait</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Program Kerja -->
-<section id="program" class="py-5">
-  <div class="container">
-    <h2 class="text-center section-title" data-aos="fade-left">Program Kerja</h2>
-    <div class="row g-4">
-      <div class="col-md-4" data-aos="zoom-in">
-        <div class="card h-100 text-center p-3">
-          <div class="icon-box"><i class="fas fa-users"></i></div>
-          <div class="card-body">
-            <h5 class="card-title">Organisasi</h5>
-            <p class="card-text">Pembentukan struktur Karang Taruna tingkat RT/RW</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
-        <div class="card h-100 text-center p-3">
-          <div class="icon-box"><i class="fas fa-hands-helping"></i></div>
-          <div class="card-body">
-            <h5 class="card-title">Kegiatan Sosial</h5>
-            <p class="card-text">Bakti sosial, donor darah, dan kegiatan kemasyarakatan lainnya.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
-        <div class="card h-100 text-center p-3">
-          <div class="icon-box"><i class="fas fa-futbol"></i></div>
-          <div class="card-body">
-            <h5 class="card-title">Olahraga & Seni</h5>
-            <p class="card-text">Turnamen olahraga, festival seni, dan pembinaan bakat pemuda.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Informasi / Pengumuman -->
-<section id="informasi" class="py-5 bg-light">
-  <div class="container">
-    <h2 class="text-center section-title" data-aos="fade-up">Informasi & Pengumuman</h2>
-    <div class="row justify-content-center">
-      <div class="col-md-10" data-aos="fade-up" data-aos-delay="100">
-        <div class="list-group shadow-sm">
-          <div class="list-group-item">
-            <h5 class="mb-1"><i class="fas fa-bullhorn text-primary me-2"></i>Rapat Koordinasi Pemuda</h5>
-            <p class="mb-1">Akan dilaksanakan pada <strong>Sabtu, 29 Juni 2025</strong> pukul <strong>19.00 WIB</strong> di <strong>Balai RW 03</strong>.</p>
-          </div>
-          <div class="list-group-item">
-            <h5 class="mb-1"><i class="fas fa-hands-helping text-success me-2"></i>Pendaftaran Relawan Bakti Sosial</h5>
-            <p class="mb-1">Dibuka hingga <strong>25 Juni 2025</strong>. Silakan mendaftar melalui Ketua RT masing-masing.</p>
-          </div>
-          <div class="list-group-item">
-            <h5 class="mb-1"><i class="fas fa-flag-checkered text-danger me-2"></i>Lomba 17 Agustus</h5>
-            <p class="mb-1">Pendaftaran lomba antar RW sudah dibuka! Daftarkan tim Anda segera. Info lebih lanjut akan diumumkan.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- Kontak -->
-<section id="kontak" class="py-5 bg-light">
-  <div class="container">
-    <h2 class="text-center section-title" data-aos="fade-up">Kontak Kami</h2>
-    <div class="row justify-content-center">
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-        <form>
-          <div class="mb-3">
-            <label class="form-label">Nama</label>
-            <input type="text" class="form-control" placeholder="Nama Anda" required />
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Pesan</label>
-            <textarea class="form-control" rows="4" placeholder="Tulis pesan Anda..." required></textarea>
-          </div>
-          <button class="btn btn-primary w-100">Kirim</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="text-white text-center py-3">
-  &copy; 2025 Karang Taruna Kebon Jeruk. All Rights Reserved.
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Terima kasih! Pesan Anda telah berhasil dikirim. Kami akan membalas segera.');
+            contactForm.reset();
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Load more gallery images
+        const loadMoreButton = document.getElementById('loadMore');
+        loadMoreButton.addEventListener('click', () => {
+            alert('Fitur "Muat Lebih Banyak" akan menampilkan gambar tambahan dari galeri kami.');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
